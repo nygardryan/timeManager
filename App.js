@@ -31,13 +31,7 @@ displayData = async (key) => {
   }
 }
 
-function hello() {
-  console.log("hello");
-}
-
-function getData(key) {
-  console.log(key);
-}   // try {
+   // try {
     //  return await AsyncStorage.getItem(key);
     // } catch (err) {
     //  console.log(err);
@@ -46,26 +40,27 @@ function getData(key) {
 data.addToDatabase("you", "two");
 data.addToDatabase("tasks", []);
 
+
+// data.getFromDatabase('you', (err, result)=>{
+//   this.setState(previousState => (
+//       { tickets: result}
+//       ))
+// });
+
+
+
 class TopBar extends Component {
   constructor(props) {
     super(props);
     this.state = { tickets: 'waiting'};
     var that = this;
-    data.getFromDatabase('you', (err, result)=>{
-      this.setState(previousState => (
-          { tickets: result}
-          ))
-    });
   }
 
   render() {
-    let textValue = typeof(data.getFromDatabase('you'));
-    console.log(textValue);
     return (
       <View style={{flex:1}}>
         <View style={{height: 40, backgroundColor: 'gray'}}></View>
         <Text style={styles.top}>Monday</Text>
-        <Text>{this.state.tickets}</Text>
       </View>
     );
   }
@@ -74,7 +69,7 @@ class TopBar extends Component {
 class AddTask extends Component {
   constructor(props) {
     super(props);
-    this.state = {taskName: 'hola', description: "potates", selectedStartDate: new Date()};
+    this.state = {taskName: 'hola', description: "description", selectedStartDate: new Date()};
   }
 
 
@@ -96,10 +91,6 @@ class AddTask extends Component {
             onChangeText={(text) => this.setState(previousState => (
              { description: text} ))}
           />
-
-          <Text style={{padding: 10, fontSize: 42}}>
-            {this.state.description}
-          </Text>
 
           <CalendarPicker 
             onDateChange={(text) => this.setState(previousState => (
