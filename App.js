@@ -17,8 +17,9 @@ import CalendarPicker from 'react-native-calendar-picker';
 //Screens
 import Settings from './screens/Settings';
 import Home from './screens/Home';
+import AddTask from './screens/AddTask';
 
-
+data.addToDatabase("tasks", []);
 
 // AsyncStorage.clear();
 
@@ -38,7 +39,6 @@ displayData = async (key) => {
     // }
 
 data.addToDatabase("you", "two");
-data.addToDatabase("tasks", []);
 
 
 // data.getFromDatabase('you', (err, result)=>{
@@ -66,50 +66,6 @@ class TopBar extends Component {
   }
 }
 
-class AddTask extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {taskName: 'hola', description: "description", selectedStartDate: new Date()};
-  }
-
-
-  render() {
-
-    return (
-      <ScrollView>
-        <View style={{padding: 5, flex: 1}}>
-          <TextInput
-            style={{height: 40}}
-            placeholder="Task Name"
-            onChangeText={(text) => this.setState(previousState => (
-             { taskName: text} ))}
-          />
-
-          <TextInput
-            style={{height: 40}}
-            placeholder="Description"
-            onChangeText={(text) => this.setState(previousState => (
-             { description: text} ))}
-          />
-
-          <CalendarPicker 
-            onDateChange={(text) => this.setState(previousState => (
-              { selectedStartDate: text}
-             ))}
-          />
-
-          <Button
-            onPress={() => {
-              data.pushToTasks(this.state);
-            }}
-            title="Save"
-          />
-
-        </View>
-      </ScrollView>
-    );
-  }
-}
 
 export default class Main extends Component {
 
