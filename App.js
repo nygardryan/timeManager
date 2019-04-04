@@ -13,13 +13,20 @@ import {
   TextInput,
   ScrollView
 } from 'react-native';
-import CalendarPicker from 'react-native-calendar-picker';
 //Screens
 import Settings from './screens/Settings';
 import Home from './screens/Home';
 import AddTask from './screens/AddTask';
+import DayTasks from './screens/DayTasks';
 
-data.addToDatabase("tasks", []);
+
+//Setup Stuff
+data.getFromDatabase('tasks', (err, result)=>{
+  if (!result) {
+    console.log('reset tasks');
+    data.addToDatabase("tasks", []);
+  }
+});
 
 // AsyncStorage.clear();
 
@@ -72,8 +79,8 @@ export default class Main extends Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        <TopBar />
-        <AddTask />
+        <DayTasks />
+
       </View>
     );
   }

@@ -15,7 +15,7 @@ var methods ={
 
 	getFromDatabase: async (key, callback) => {
 		try {
-			AsyncStorage.getItem(key, callback);
+			await AsyncStorage.getItem(key, callback);
 		} catch (err) {
 			console.log(err);
 		}

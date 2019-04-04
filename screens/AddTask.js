@@ -41,6 +41,9 @@ class AddTask extends Component {
           <Button
             onPress={() => {
               data.pushToTasks(this.state);
+              data.getFromDatabase('tasks', (err, result)=>{
+                console.log(result);
+              });
             }}
             title="Save"
           />
