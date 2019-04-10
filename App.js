@@ -11,13 +11,15 @@ import {
   Button,
   AsyncStorage,
   TextInput,
-  ScrollView
+  ScrollView,
+  StatusBar
 } from 'react-native';
 //Screens
 import Settings from './screens/Settings';
 import Home from './screens/Home';
 import AddTask from './screens/AddTask';
 import DayTasks from './screens/DayTasks';
+import TopBar from './screens/TopBar';
 
 
 //Setup Stuff
@@ -47,7 +49,6 @@ displayData = async (key) => {
 
 data.addToDatabase("you", "two");
 
-
 // data.getFromDatabase('you', (err, result)=>{
 //   this.setState(previousState => (
 //       { tickets: result}
@@ -56,29 +57,13 @@ data.addToDatabase("you", "two");
 
 
 
-class TopBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { tickets: 'waiting'};
-    var that = this;
-  }
-
-  render() {
-    return (
-      <View style={{flex:1}}>
-        <View style={{height: 40, backgroundColor: 'gray'}}></View>
-        <Text style={styles.top}>Monday</Text>
-      </View>
-    );
-  }
-}
-
-
 export default class Main extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.main}>
+        <StatusBar hidden />
+        <TopBar />
         <DayTasks />
 
       </View>
@@ -88,12 +73,9 @@ export default class Main extends Component {
 
 
 const styles = StyleSheet.create({
-  top: {
-    fontWeight: 'bold',
-    fontSize: 45,
-  },
-  add: {
-
+  main: {
+    justifyContent: 'space-between',
+    flexDirection: 'column'
   },
 });
 

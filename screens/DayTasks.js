@@ -2,18 +2,30 @@ var data = require('../async_storage_tool.js');
 
 
 import React, { Component } from 'react';
-import { View, Text, Button, ScrollView, TextInput, SectionList, FlatList} from 'react-native';
+import { View, Text, Button, ScrollView, TextInput, SectionList, FlatList, StyleSheet} from 'react-native';
+
+
+const styles = StyleSheet.create({
+	listItems: {
+		flexDirection: 'row',
+		flex: 1,
+		justifyContent: 'space-between'
+	}
+})
+
+
+
 
 class DayTasks extends Component {
   constructor(props) {
     super(props);
 	this.state = {taskList: [{"taskName":"placeHolder"}]};
-	console.log(this.state.taskList);
   }
 
   componentWillMount(){
   	data.getFromDatabase('tasks', (err, result)=>{
   		this.setState({taskList : JSON.parse(result)});
+  		console.log(result);
   	});
   }
 
@@ -23,7 +35,12 @@ class DayTasks extends Component {
       <View>
         <FlatList
           data={this.state.taskList}
-          renderItem={({item}) => <Text>{item.taskName}</Text>}
+          renderItem={({item}) => <View style={styles.listItems}>
+          <Text>{item.taskName}</Text>
+          <Text>{item.description}</Text>
+          <Text>{item.selectedStartDate}</Text>
+          <Text>{this.state.taskName}</Text>
+          </View>}
         />      	
       </View>
     );
