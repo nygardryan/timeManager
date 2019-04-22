@@ -14,8 +14,6 @@ const styles = StyleSheet.create({
 })
 
 
-
-
 class DayTasks extends Component {
   constructor(props) {
     super(props);
@@ -33,15 +31,17 @@ class DayTasks extends Component {
   render() {
     return (
       <View>
-        <FlatList
-          data={this.state.taskList}
-          renderItem={({item}) => <View style={styles.listItems}>
-          <Text>{item.taskName}</Text>
-          <Text>{item.description}</Text>
-          <Text>{item.selectedStartDate}</Text>
-          <Text>{this.state.taskName}</Text>
-          </View>}
-        />      	
+      	<ScrollView>
+	        <FlatList
+	          data={this.state.taskList}
+	          renderItem={({item}) => <View style={styles.listItems}>
+	          <Text>{item.taskName}</Text>
+	          <Text>{item.description}</Text>
+	          <Text>{item.selectedStartDate}</Text>
+	          <Text>{this.state.taskName}</Text>
+	          </View>}
+	        />
+        </ScrollView>      	
       </View>
     );
   }

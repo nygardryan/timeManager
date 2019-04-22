@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {createStackNavigator, createAppContainer} from 'react-navigation';
 // import {AsyncStorageExample, addToDatabase, getFromDatabase } from './async_storage_tool.js'
 var data = require('./async_storage_tool.js');
 //Elements
@@ -20,6 +21,7 @@ import Home from './screens/Home';
 import AddTask from './screens/AddTask';
 import DayTasks from './screens/DayTasks';
 import TopBar from './screens/TopBar';
+import BottomBar from './screens/BottomBar';
 
 
 //Setup Stuff
@@ -56,21 +58,44 @@ data.addToDatabase("you", "two");
 // });
 
 
+// NAVIGATION //
 
-export default class Main extends Component {
 
+
+// MAIN COMPONENT //
+
+class Main extends Component {
+  static navigationOptions = {
+    title: 'Monday',
+  };
   render() {
+    const {navigate} = this.props.navigation;
+
     return (
       <View style={styles.main}>
-        <StatusBar hidden />
-        <TopBar />
-        <DayTasks />
-
+        <ScrollView>
+          <StatusBar hidden />
+          <TopBar />
+          <DayTasks />
+          <BottomBar />
+          <Button
+            title="Add New Task"
+            onPress={() => navigate('AddNewTask')}
+          />
+        </ScrollView>
       </View>
     );
   }
 }
 
+const MainNavigator = createStackNavigator({
+  Home: {screen: Main},
+  AddNewTask: {screen: AddTask},
+});
+
+const App = createAppContainer(MainNavigator);
+
+export default App;
 
 const styles = StyleSheet.create({
   main: {

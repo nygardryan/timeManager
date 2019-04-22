@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button, ScrollView, TextInput, StyleSheet } from 'react-native';
 
-
 function buttonPress() {
   console.log("big button pressed");
 }
@@ -10,7 +9,11 @@ const styles = StyleSheet.create({
   top: {
     fontWeight: 'bold',
     fontSize: 45,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 15,
+    marginBottom: 15,
+    color: 'white',
+    backgroundColor: "tan"
   },
   button: {
     height: 125,
@@ -30,13 +33,12 @@ export class TopBar extends Component {
   render() {
     return (
       <View style={styles.top}>
-        <View style={styles.button}>
-          <Button
-            onPress={buttonPress}
-            title="START ASCENDANCY"
-            color="#d3c38f"
-          />
-        </View>
+        <Button
+          style={styles.button}
+          onPress={buttonPress}
+          title="START ASCENDANCY"
+          color="#d3c38f"
+        />
         <Text style={styles.top}>25:00</Text>
         <Text>1/4 COMPLETED</Text>
       </View>

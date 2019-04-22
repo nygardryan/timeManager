@@ -6,6 +6,8 @@ import { View, Text, Button, ScrollView, TextInput } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker';
 
 
+
+
 class AddTask extends Component {
   constructor(props) {
     super(props);
@@ -14,6 +16,7 @@ class AddTask extends Component {
 
 
   render() {
+    const {navigate} = this.props.navigation;
 
     return (
       <ScrollView>
@@ -44,14 +47,16 @@ class AddTask extends Component {
               data.getFromDatabase('tasks', (err, result)=>{
                 console.log(result);
               });
+              navigate('Home');
             }}
             title="Save"
           />
-
         </View>
       </ScrollView>
     );
   }
 }
+
+
 
 export default AddTask;

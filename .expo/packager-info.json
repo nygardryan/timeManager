@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 5660,
-  "expoServerNgrokUrl": "https://3a-4cj.anonymous.timemanagement.exp.direct",
-  "packagerNgrokUrl": "https://packager.3a-4cj.anonymous.timemanagement.exp.direct",
-  "ngrokPid": 5726
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
