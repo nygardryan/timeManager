@@ -66,7 +66,7 @@ data.addToDatabase("you", "two");
 
 class Main extends Component {
   static navigationOptions = {
-    title: 'Monday',
+    title: "Sunday",
   };
   render() {
     const {navigate} = this.props.navigation;

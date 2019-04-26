@@ -14,10 +14,12 @@ const styles = StyleSheet.create({
 })
 
 
+
+
 class DayTasks extends Component {
   constructor(props) {
     super(props);
-	this.state = {taskList: [{"taskName":"placeHolder"}]};
+	this.state = {taskList: [{"taskName":"placeHolder"}], whatDay: "Sunday"};
   }
 
   componentWillMount(){

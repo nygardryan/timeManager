@@ -17,7 +17,6 @@ class AddTask extends Component {
 
   render() {
     const {navigate} = this.props.navigation;
-
     return (
       <ScrollView>
         <View style={{padding: 5, flex: 1}}>
@@ -37,7 +36,7 @@ class AddTask extends Component {
 
           <CalendarPicker 
             onDateChange={(text) => this.setState(previousState => (
-              { selectedStartDate: text}
+              { selectedStartDate: Date(text)}
              ))}
           />
 
